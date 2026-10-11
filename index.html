@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Qualification Booking | Safe Insight</title>
+
+  <style>
+    /* =========================================================
+       BASE
+       ========================================================= */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: #1f2933;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+
+    /* =========================================================
+       PAGE WRAPPER
+       ========================================================= */
+
+    .page {
+      width: min(100% - 40px, 900px);
+      margin: 0 auto;
+      padding: 40px 0 60px;
+    }
+
+
+    /* =========================================================
+       PAGE HEADER
+       ========================================================= */
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+
+    .safe-insight-logo-placeholder {
+      width: min(100%, 360px);
+      min-height: 110px;
+      margin: 0 auto 22px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 2px dashed #c7cdd3;
+      border-radius: 8px;
+      background: #f7f8f9;
+
+      color: #6b7280;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      margin: 0;
+      color: #111827;
+      font-size: 34px;
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
+    .page-subtitle {
+      margin: 10px 0 0;
+      color: #374151;
+      font-size: 20px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+
+    /* =========================================================
+       QUALIFICATION LOCATION
+       ========================================================= */
+
+    .qualification-location {
+      padding: 0 10px;
+    }
+
+
+    /* =========================================================
+       RANGE ROW
+       ========================================================= */
+
+    .range-row {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      gap: 38px;
+      align-items: center;
+    }
+
+    .range-logo-placeholder {
+      width: 230px;
+      height: 130px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 2px dashed #c7cdd3;
+      border-radius: 8px;
+      background: #f7f8f9;
+
+      color: #6b7280;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-align: center;
+    }
+
+    .range-info h2 {
+      margin: 0 0 5px;
+      color: #111827;
+      font-size: 24px;
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .range-info address {
+      margin: 0;
+      color: #4b5563;
+      font-size: 17px;
+      line-height: 1.45;
+      font-style: normal;
+    }
+
+
+    /* =========================================================
+       INSTRUCTOR ROW
+       ========================================================= */
+
+    .instructor-row {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      gap: 38px;
+      align-items: center;
+
+      margin-top: 30px;
+    }
+
+    .instructor-block {
+      text-align: center;
+    }
+
+    .instructor-photo-placeholder {
+      width: 170px;
+      height: 170px;
+      margin: 0 auto 10px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 2px dashed #c7cdd3;
+      border-radius: 8px;
+      background: #f7f8f9;
+
+      color: #6b7280;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    .instructor-name {
+      margin: 0;
+      color: #111827;
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 700;
+    }
+
+
+    /* =========================================================
+       BOOKING BUTTON
+       ========================================================= */
+
+    .booking-area {
+      display: flex;
+      align-items: center;
+    }
+
+    .book-button {
+      display: inline-flex;
+      min-width: 230px;
+      min-height: 54px;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 14px 30px;
+
+      border-radius: 7px;
+      background: #1f4e79;
+      color: #ffffff;
+
+      font-size: 17px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: 0.025em;
+      text-decoration: none;
+
+      transition:
+        background-color 0.15s ease,
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+    }
+
+    .book-button:hover {
+      background: #173b5c;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+      transform: translateY(-1px);
+    }
+
+    .book-button:focus-visible {
+      outline: 3px solid #93c5fd;
+      outline-offset: 3px;
+    }
+
+
+    /* =========================================================
+       SEPARATOR BETWEEN RANGE / INSTRUCTOR COMBINATIONS
+       ========================================================= */
+
+    .location-divider {
+      height: 1px;
+      margin: 48px 0;
+      border: 0;
+      background: #d9dde2;
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 650px) {
+
+      .page {
+        width: min(100% - 30px, 900px);
+        padding: 26px 0 40px;
+      }
+
+      .page-header {
+        margin-bottom: 36px;
+      }
+
+      .safe-insight-logo-placeholder {
+        width: min(100%, 290px);
+        min-height: 90px;
+        margin-bottom: 20px;
+      }
+
+      .page-header h1 {
+        font-size: 27px;
+      }
+
+      .page-subtitle {
+        margin-top: 8px;
+        font-size: 17px;
+      }
+
+      .qualification-location {
+        padding: 0;
+      }
+
+
+      /* Range information stacks vertically */
+
+      .range-row {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        text-align: center;
+      }
+
+      .range-logo-placeholder {
+        width: min(100%, 280px);
+        height: 120px;
+      }
+
+      .range-info h2 {
+        font-size: 22px;
+      }
+
+      .range-info address {
+        font-size: 16px;
+      }
+
+
+      /* Instructor follows range information */
+
+      .instructor-row {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        margin-top: 32px;
+        text-align: center;
+      }
+
+      .instructor-photo-placeholder {
+        width: 165px;
+        height: 165px;
+      }
+
+      .instructor-name {
+        font-size: 18px;
+      }
+
+
+      /* Large, easy-to-tap booking button */
+
+      .booking-area {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .book-button {
+        width: min(100%, 320px);
+        min-height: 56px;
+        padding: 16px 24px;
+        font-size: 17px;
+      }
+
+
+      /* Clear separation before the next location */
+
+      .location-divider {
+        margin: 42px 0;
+      }
+    }
+
+
+    /* =========================================================
+       VERY SMALL PHONES
+       ========================================================= */
+
+    @media (max-width: 380px) {
+
+      .page {
+        width: calc(100% - 24px);
+      }
+
+      .page-header h1 {
+        font-size: 24px;
+      }
+
+      .page-subtitle {
+        font-size: 16px;
+      }
+
+      .range-info h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <header class="page-header">
+
+      <!--
+        Replace this placeholder with the Safe Insight logo later.
+
+        Example:
+
+        <img
+          src="images/safe-insight-logo.png"
+          alt="Safe Insight"
+          class="safe-insight-logo"
+        >
+      -->
+
+      <div class="safe-insight-logo-placeholder">
+        SAFE INSIGHT LOGO
+      </div>
+
+      <h1>QUALIFICATION BOOKING</h1>
+
+      <p class="page-subtitle">
+        Orange County CCW - LA County CCW - LEOSA
+      </p>
+
+    </header>
+
+
+    <!-- =====================================================
+         INSIGHT SHOOTING RANGE
+         ===================================================== -->
+
+    <section class="qualification-location">
+
+      <div class="range-row">
+
+        <!-- Range logo placeholder -->
+        <div class="range-logo-placeholder">
+          NO RANGE LOGO<br>
+          AVAILABLE
+        </div>
+
+        <div class="range-info">
+          <h2>Insight Shooting Range</h2>
+
+          <address>
+            17020 Alburtis Ave<br>
+            Artesia, CA 90701
+          </address>
+        </div>
+
+      </div>
+
+
+      <div class="instructor-row">
+
+        <div class="instructor-block">
+
+          <!-- Instructor photo placeholder -->
+          <div class="instructor-photo-placeholder">
+            NO IMAGE<br>
+            AVAILABLE
+          </div>
+
+          <p class="instructor-name">
+            Al Erkelens
+          </p>
+
+        </div>
+
+        <div class="booking-area">
+
+          <a
+            class="book-button"
+            href="https://apps.safeinsight.net/booking/?location=safe-insight&instructor=al-erkelens"
+          >
+            BOOK NOW
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <hr class="location-divider">
+
+
+    <!-- =====================================================
+         LA PUENTE FIRING RANGE
+         ===================================================== -->
+
+    <section class="qualification-location">
+
+      <div class="range-row">
+
+        <!-- Range logo placeholder -->
+        <div class="range-logo-placeholder">
+          NO RANGE LOGO<br>
+          AVAILABLE
+        </div>
+
+        <div class="range-info">
+          <h2>La Puente Firing Range</h2>
+
+          <address>
+            16418 Valley Blvd<br>
+            La Puente, CA 91744
+          </address>
+        </div>
+
+      </div>
+
+
+      <div class="instructor-row">
+
+        <div class="instructor-block">
+
+          <!-- Instructor photo placeholder -->
+          <div class="instructor-photo-placeholder">
+            NO IMAGE<br>
+            AVAILABLE
+          </div>
+
+          <p class="instructor-name">
+            Brandon Cammarata
+          </p>
+
+        </div>
+
+        <div class="booking-area">
+
+          <a
+            class="book-button"
+            href="https://apps.safeinsight.net/booking/?location=safe-insight&instructor=brandon-cammarata"
+          >
+            BOOK NOW
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <hr class="location-divider">
+
+
+    <!-- =====================================================
+         LAX FIRING RANGE
+         ===================================================== -->
+
+    <section class="qualification-location">
+
+      <div class="range-row">
+
+        <!-- Range logo placeholder -->
+        <div class="range-logo-placeholder">
+          NO RANGE LOGO<br>
+          AVAILABLE
+        </div>
+
+        <div class="range-info">
+          <h2>LAX Firing Range</h2>
+
+          <address>
+            927 W Manchester Blvd<br>
+            Inglewood, CA 90301
+          </address>
+        </div>
+
+      </div>
+
+
+      <div class="instructor-row">
+
+        <div class="instructor-block">
+
+          <!-- Instructor photo placeholder -->
+          <div class="instructor-photo-placeholder">
+            NO IMAGE<br>
+            AVAILABLE
+          </div>
+
+          <p class="instructor-name">
+            Wayne Feltenberger
+          </p>
+
+        </div>
+
+        <div class="booking-area">
+
+          <a
+            class="book-button"
+            href="https://apps.safeinsight.net/booking/?location=safe-insight&instructor=wayne-feltenberger"
+          >
+            BOOK NOW
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>
