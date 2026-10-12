@@ -142,17 +142,20 @@
       text-align: center;
     }
 
-    .instructor-photo-placeholder {
+    .instructor-photo-placeholder,
+    .instructor-photo {
       width: 170px;
       height: 170px;
       margin: 0 auto 10px;
+      border-radius: 8px;
+    }
 
+    .instructor-photo-placeholder {
       display: flex;
       align-items: center;
       justify-content: center;
 
       border: 2px dashed #c7cdd3;
-      border-radius: 8px;
       background: #f7f8f9;
 
       color: #6b7280;
@@ -160,6 +163,12 @@
       font-weight: 700;
       line-height: 1.35;
       text-align: center;
+    }
+
+    .instructor-photo {
+      display: block;
+      object-fit: cover;
+      object-position: center;
     }
 
     .instructor-name {
@@ -298,7 +307,8 @@
         text-align: center;
       }
 
-      .instructor-photo-placeholder {
+      .instructor-photo-placeholder,
+      .instructor-photo {
         width: 165px;
         height: 165px;
       }
@@ -411,14 +421,14 @@
 
         <div class="instructor-block">
 
-          <!-- Instructor photo placeholder -->
-          <div class="instructor-photo-placeholder">
-            NO IMAGE<br>
-            AVAILABLE
-          </div>
+          <img
+            src="Wayno 2.jpg"
+            alt="Wayne Feltenberger"
+            class="instructor-photo"
+          >
 
           <p class="instructor-name">
-            Al Erkelens
+            Wayne Feltenberger
           </p>
 
         </div>
